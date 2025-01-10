@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankara H3 Renkli Çokgenler</title>
+    <style>
+        .polygon {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid;
+            position: relative;
+            margin: 20px;
+        }
+        .dropdown {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ankara H3 Renkli Çokgenler</h1>
+    <select class="dropdown" id="resolutionDropdown">
+        <option value="small">Küçük</option>
+        <option value="medium">Orta</option>
+        <option value="large">Büyük</option>
+    </select>
+    <div id="polygonContainer"></div>
+
+    <script>
+        const resolutions = {
+            small: 'red',
+            medium: 'green',
+            large: 'blue'
+        };
+
+        const dropdown = document.getElementById('resolutionDropdown');
+        const polygonContainer = document.getElementById('polygonContainer');
+
+        dropdown.addEventListener('change', function() {
+            const selectedResolution = dropdown.value;
+            polygonContainer.innerHTML = ''; // Önceki çokgenleri temizle
+            for (let i = 0; i < 5; i++) {
+                const polygon = document.createElement('div');
+                polygon.className = 'polygon';
+                polygon.style.borderBottomColor = resolutions[selectedResolution];
+                polygonContainer.appendChild(polygon);
+            }
+        });
+    </script>
+</body>
+</html> 
